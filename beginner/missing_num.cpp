@@ -12,19 +12,18 @@ Explanation: The missing number between 1 to 8 is 7
 
 using namespace std;
 
-int findMissing(int arr[], int len){
-    if(arr[0] != 1) return 1;
-    for(int i = 1; i < len;  i++){
-        if(arr[i] != (i + 1))
-            return i + 1;
+int findMissing(int arr[], int n){
+    int sum = n * (n + 1)/2;
+    for(int i = 0; i < n-1 ;  i++){
+        sum -= arr[i];
     }
-    return -1;
+    return sum;
 }
 
 int main()
 {
-    int arr[] = {1,2,3,4,5,6,8};
+    int arr[] = {1,3,5,2,4,6,8};
     int len = sizeof(arr)/sizeof(arr[0]);
-    cout << findMissing(arr, len) << endl;
+    cout << findMissing(arr, len + 1) << endl;
     return 0;
 }
